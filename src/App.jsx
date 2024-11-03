@@ -4,7 +4,11 @@ import GameScreen from "./components/GameScreen";
 
 function App() {
     const [playingUsers, setPlayingUsers] = useState([]);
-    return <></>;
+    return (
+        <>
+            <GameScreen playingUsers={playingUsers} />
+        </>
+    );
 }
 
 export default App;
