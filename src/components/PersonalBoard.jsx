@@ -6,7 +6,25 @@ export default function PersonalBoard(props) {
 
     const addOne = () => {
         setGameValue((prevGameValue) => prevGameValue++);
-        SetScore((preScore) => preScore++);
+        SetScore((prevScore) => prevScore++);
+        props.changePlayer();
+    };
+
+    const subtractOne = () => {
+        setGameValue((prevGameValue) => prevGameValue--);
+        SetScore((prevScore) => prevScore++);
+        props.changePlayer();
+    };
+
+    const multiplyByTwo = () => {
+        setGameValue((prevGameValue) => prevGameValue * 2);
+        SetScore((prevScore) => prevScore++);
+        props.changePlayer();
+    };
+
+    const divideByTwo = () => {
+        setGameValue((prevGameValue) => prevGameValue / 2);
+        SetScore((prevScore) => prevScore++);
         props.changePlayer();
     };
 
@@ -16,10 +34,10 @@ export default function PersonalBoard(props) {
             <div>{gameValue}</div>
             <div>steps: {score}</div>
             <div>
-                <button>+1</button>
-                <button>-1</button>
-                <button>*2</button>
-                <button>/2</button>
+                <button onClick={addOne}>+1</button>
+                <button onClick={{ subtractOne }}>-1</button>
+                <button onClick={multiplyByTwo}>*2</button>
+                <button onClick={{ divideByTwo }}>/2</button>
             </div>
         </>
     );
