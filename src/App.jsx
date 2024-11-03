@@ -4,13 +4,15 @@ import GameScreen from "./components/GameScreen";
 import Login from "./components/Login";
 
 function App() {
+    const [playingUsers, setPlayingUsers] = useState([]);
+
    
    
     return(
     
         <>
         
-        <Login />
+        <Login setPlayingUsers={setPlayingUsers}/>
         <GameScreen playingUsers={playingUsers} />
     </>
     );
