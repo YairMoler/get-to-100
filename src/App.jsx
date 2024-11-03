@@ -4,17 +4,20 @@ import GameScreen from "./components/GameScreen";
 import Login from "./components/Login";
 
 function App() {
-    const [playingUsers, setPlayingUsers] = useState([]);
+    const [playingUsers, setPlayingUsers] = useState([
+        { name: "a", score: [3, 4] },
+        { name: "b", score: [4, 5] },
+    ]);
 
-   
-   
-    return(
-    
+    const updateScore = (index) => {
+        setPlayingUsers();
+    };
+
+    return (
         <>
-        
-        <Login setPlayingUsers={setPlayingUsers}/>
-        <GameScreen playingUsers={playingUsers} />
-    </>
+            <Login setPlayingUsers={setPlayingUsers} />
+            <GameScreen playingUsers={playingUsers} />
+        </>
     );
 }
 
