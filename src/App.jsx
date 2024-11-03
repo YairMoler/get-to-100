@@ -7,9 +7,13 @@ function App() {
    
    
     return(
-    <>
+    
+        <>
+        
         <Login />
-    </>);
+        <GameScreen playingUsers={playingUsers} />
+    </>
+    );
 }
 
 export default App;
