@@ -80,7 +80,7 @@ export default function PersonalBoard(props) {
             )}
             {endGame && (
                 <div>
-                    <h3>Do you want to play again?</h3>
+                    <h3 className={styles.h3}>Do you want to play again?</h3>
                     <button onClick={startNewGame}>yes</button>
                     <button onClick={() => props.stopPlaying(props.id, props.index)}>no</button>
                 </div>

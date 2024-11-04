@@ -1,5 +1,11 @@
 .div{
     margin: 10px;
     font-size: 30px;
-    height: 160px;
+    height: 200px;
+    width: 300px;
+    color: #008fb3;
+}
+
+.h3{
+    font-size: 0.8em;
 }
