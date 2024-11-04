@@ -2,12 +2,11 @@ import { useState } from "react";
 import "./App.css";
 import GameScreen from "./components/GameScreen";
 import Login from "./components/Login";
+import LeaderBoard from "./components/LeaderBoard";
 
 function App() {
-    const [playingUsers, setPlayingUsers] = useState([
-        // { name: "a", score: [3, 4], id: 1 },
-        // { name: "b", score: [4, 5], id: 2 },
-    ]);
+    const [playingUsers, setPlayingUsers] = useState([]);
+    const [gameEndCounter, setGameEndCounter] = useState(0);
 
     const updateScoreAtEnd = (id, newScore) => {
         const newPlayers = playingUsers.map((player, currentIndex) =>
@@ -30,8 +29,9 @@ function App() {
         <>
             <header>
                 <Login setPlayingUsers={setPlayingUsers} />
+                <LeaderBoard gameEndCounter={gameEndCounter} />
             </header>
-            <GameScreen playingUsers={playingUsers} updateScoreAtEnd={updateScoreAtEnd} logout={logout} />
+            <GameScreen playingUsers={playingUsers} updateScoreAtEnd={updateScoreAtEnd} logout={logout} setGameEndCounter={setGameEndCounter} />
         </>
     );
 }

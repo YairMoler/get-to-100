@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "../css/personalBoard.module.css";
 
 export default function PersonalBoard(props) {
     const [gameValue, setGameValue] = useState(Math.floor(Math.random() * 99) + 1);
@@ -65,7 +66,7 @@ export default function PersonalBoard(props) {
     };
 
     return (
-        <div>
+        <div className={styles.div}>
             <h2>player: {props.player.name}</h2>
             <div>{gameValue}</div>
             <div>steps: {score}</div>

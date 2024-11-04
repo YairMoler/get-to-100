@@ -2,4 +2,6 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    align-content: space-around;
+    justify-content: space-around;
 }

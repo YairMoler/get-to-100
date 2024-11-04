@@ -12,7 +12,6 @@ export default function GameScreen(props) {
         props.logout(id);
         console.log("setActivePlayer: ", activePlayer);
     };
-    const [gameEndCounter, setGameEndCounter] = useState(0);
 
     return (
         <div className={styles.div}>
@@ -26,10 +25,9 @@ export default function GameScreen(props) {
                     stopPlaying={stopPlaying}
                     id={player.id}
                     index={index}
-                    setGameEndCounter={setGameEndCounter}
+                    setGameEndCounter={props.setGameEndCounter}
                 />
             ))}
-            <LeaderBoard gameEndCounter={gameEndCounter} />
         </div>
     );
 }
