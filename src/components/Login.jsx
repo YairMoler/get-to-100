@@ -15,40 +15,28 @@ export default function Login({ setPlayingUsers }) {
         return newUser;
     }
 
-    function processUser() {
-        let allUsers = JSON.parse(localStorage.getItem("allUsers"));
-        let userIsNew = true;
-        for (let i = 0; i < allUsers.length; i++) {
-            console.log("i'm in loop");
-            if (username === allUsers[i].name) {
-                console.log("dave exists");
-                setPlayingUsers((prevPlayingUsers) => [...prevPlayingUsers, allUsers[i]]);
+    function processUser(){
+        let allUsers = JSON.parse(localStorage.getItem("allUsers"))
+        let userIsNew = true
+        for (let i = 0; i< allUsers.length; i++){
+            if (username === allUsers[i].name){
+                setPlayingUsers((prevPlayingUsers)=> [...prevPlayingUsers, allUsers[i]])
                 userIsNew = false;
-                break;
+                break
             }
         }
-        if (userIsNew) {
-            // addToAllUsers (username);
-            // setPlayingUsers((prevPlayingUsers)=>{
-            const newUser = addToAllUsers(username); // Use returned newUser directly
-            console.log(newUser);
+        if (userIsNew){
+            const newUser = addToAllUsers(username);
             setPlayingUsers((prevPlayingUsers) => [...prevPlayingUsers, newUser]);
-            //return [...prevPlayingUsers, allUsers[allUsers.length]]
-            // console.log("playingUsers : ",playingUsers)
+            }
         }
-    }
+    
 
-    return (
-        <div>
-            {" "}
-            Username:
-            <input
-                name="username"
-                value={username}
-                onChange={(e) => {
-                    setUserName(e.target.value);
-                }}
-            />
+    return(
+    <div> Username: 
+            <input name="username" 
+                    value={username} 
+                    onChange={(e)=>{setUserName(e.target.value)}}/>
             <button onClick={processUser}> submit</button>
         </div>
     );

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PersonalBoard from "./PersonalBoard";
+import LeaderBoard from "./LeaderBoard";
 import styles from "../css/gameScreen.module.css";
 
 export default function GameScreen(props) {
@@ -11,6 +12,7 @@ export default function GameScreen(props) {
         props.logout(id);
         console.log("setActivePlayer: ", activePlayer);
     };
+    const [gameEndCounter, setGameEndCounter] = useState(0);
 
     return (
         <div className={styles.div}>
@@ -24,8 +26,10 @@ export default function GameScreen(props) {
                     stopPlaying={stopPlaying}
                     id={player.id}
                     index={index}
+                    setGameEndCounter={setGameEndCounter}
                 />
             ))}
+            <LeaderBoard gameEndCounter={gameEndCounter} />
         </div>
     );
 }
