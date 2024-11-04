@@ -5,8 +5,8 @@ import Login from "./components/Login";
 
 function App() {
     const [playingUsers, setPlayingUsers] = useState([
-        { name: "a", score: [3, 4] },
-        { name: "b", score: [4, 5] },
+        // { name: "a", score: [3, 4] },
+        // { name: "b", score: [4, 5] },
     ]);
 
     const updateScore = (index) => {

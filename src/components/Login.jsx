@@ -19,7 +19,9 @@ export default function Login({setPlayingUsers}){
         }
         users.push(newUser)
         localStorage.setItem("allUsers", JSON.stringify(users))
+        return newUser
     }
+
 
     function processUser(){
         let allUsers = JSON.parse(localStorage.getItem("allUsers"))
@@ -35,14 +37,17 @@ export default function Login({setPlayingUsers}){
             }
         }
         if (userIsNew){
-            addToAllUsers (username);
-            setPlayingUsers((prevPlayingUsers)=>{
-                return [...prevPlayingUsers, allUsers[allUsers.length-1]]
+            // addToAllUsers (username);
+            // setPlayingUsers((prevPlayingUsers)=>{
+            const newUser = addToAllUsers(username); // Use returned newUser directly
+            console.log(newUser)
+            setPlayingUsers((prevPlayingUsers) => [...prevPlayingUsers, newUser]);
+                //return [...prevPlayingUsers, allUsers[allUsers.length]]
                // console.log("playingUsers : ",playingUsers)
             }
-        )
+        
         }
-    }
+    
 
     return(
     <div> Username: 
@@ -55,4 +60,3 @@ export default function Login({setPlayingUsers}){
     );
 
 }
-
