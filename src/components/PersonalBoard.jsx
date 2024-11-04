@@ -61,7 +61,7 @@ export default function PersonalBoard(props) {
     };
 
     return (
-        <>
+        <div>
             <h2>player: {props.player.name}</h2>
             <div>{gameValue}</div>
             <div>steps: {score}</div>
@@ -80,6 +80,6 @@ export default function PersonalBoard(props) {
                     <button onClick={() => props.stopPlaying(props.id, props.index)}>no</button>
                 </div>
             )}
-        </>
+        </div>
     );
 }

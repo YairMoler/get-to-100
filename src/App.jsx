@@ -28,7 +28,9 @@ function App() {
     };
     return (
         <>
-            <Login setPlayingUsers={setPlayingUsers} />
+            <header>
+                <Login setPlayingUsers={setPlayingUsers} />
+            </header>
             <GameScreen playingUsers={playingUsers} updateScoreAtEnd={updateScoreAtEnd} logout={logout} />
         </>
     );

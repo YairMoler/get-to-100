@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PersonalBoard from "./PersonalBoard";
+import styles from "../css/gameScreen.module.css";
 
 export default function GameScreen(props) {
     const [activePlayer, setActivePlayer] = useState(0);
@@ -12,7 +13,7 @@ export default function GameScreen(props) {
     };
 
     return (
-        <>
+        <div className={styles.div}>
             {props.playingUsers.map((player, index) => (
                 <PersonalBoard
                     player={player}
@@ -25,6 +26,6 @@ export default function GameScreen(props) {
                     index={index}
                 />
             ))}
-        </>
+        </div>
     );
 }
