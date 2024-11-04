@@ -22,7 +22,7 @@ export default function PersonalBoard(props) {
             console.log("hi");
             setEndGame(true);
             console.log("endGame: ", endGame);
-            props.updateScore(props.index, score + 1);
+            props.updateScoreAtEnd(props.id, score + 1);
             setGameEndCounter((prevCount) => prevCount + 1);
         }
         props.changePlayer();
@@ -34,7 +34,7 @@ export default function PersonalBoard(props) {
         if (gameValue - 1 === 100) {
             setEndGame(true);
             console.log("endGame: ", endGame);
-            props.updateScore(props.index, score + 1);
+            props.updateScoreAtEnd(props.id, score + 1);
             setGameEndCounter((prevCount) => prevCount + 1);
         }
         props.changePlayer();
@@ -46,7 +46,7 @@ export default function PersonalBoard(props) {
         if (gameValue * 2 === 100) {
             setEndGame(true);
             console.log("endGame: ", endGame);
-            props.updateScore(props.index, score + 1);
+            props.updateScoreAtEnd(props.id, score + 1);
             setGameEndCounter((prevCount) => prevCount + 1);
         }
         props.changePlayer();
@@ -58,7 +58,7 @@ export default function PersonalBoard(props) {
         if (gameValue / 2 === 100) {
             setEndGame(true);
             console.log("endGame: ", endGame);
-            props.updateScore(props.index, score + 1);
+            props.updateScoreAtEnd(props.id, score + 1);
             setGameEndCounter((prevCount) => prevCount + 1);
         }
         props.changePlayer();
@@ -81,7 +81,7 @@ export default function PersonalBoard(props) {
                 <div>
                     <h3>Do you want to play again?</h3>
                     <button onClick={startNewGame}>yes</button>
-                    {/* <button onClick={logOut}>no</button> */}
+                    <button onClick={() => props.stopPlaying(props.id, props.index)}>no</button>
                 </div>
             )}
         </>

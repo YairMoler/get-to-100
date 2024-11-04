@@ -1,27 +1,19 @@
-import { useState } from "react"
+import { useState } from "react";
 
-
-export default function Login({setPlayingUsers}){
-    
+export default function Login({ setPlayingUsers }) {
     const [username, setUserName] = useState("");
-    
-    
-    const allUsers = []
-    if (localStorage.getItem("allUsers")===null){
-        localStorage.setItem("allUsers", JSON.stringify(allUsers))
-    }
-    
-    function addToAllUsers (username){
-        let users = JSON.parse(localStorage.getItem("allUsers"))
+
+    function addToAllUsers(username) {
+        let users = JSON.parse(localStorage.getItem("allUsers"));
         let newUser = {
             name: username,
-            score: []
-        }
-        users.push(newUser)
-        localStorage.setItem("allUsers", JSON.stringify(users))
-        return newUser
+            score: [],
+            id: new Date().getTime(),
+        };
+        users.push(newUser);
+        localStorage.setItem("allUsers", JSON.stringify(users));
+        return newUser;
     }
-
 
     function processUser(){
         let allUsers = JSON.parse(localStorage.getItem("allUsers"))
@@ -46,7 +38,6 @@ export default function Login({setPlayingUsers}){
                     value={username} 
                     onChange={(e)=>{setUserName(e.target.value)}}/>
             <button onClick={processUser}> submit</button>
-    </div>
+        </div>
     );
-
 }
