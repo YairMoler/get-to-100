@@ -1,10 +1,5 @@
 import { useState } from "react";
 
-const allUsers = [];
-if (localStorage.getItem("allUsers") === null) {
-    localStorage.setItem("allUsers", JSON.stringify(allUsers));
-}
-
 export default function Login({ setPlayingUsers }) {
     const [username, setUserName] = useState("");
 
@@ -17,23 +12,29 @@ export default function Login({ setPlayingUsers }) {
         };
         users.push(newUser);
         localStorage.setItem("allUsers", JSON.stringify(users));
+        return newUser;
     }
 
     function processUser() {
-        console.log("asdfsa");
+        let allUsers = JSON.parse(localStorage.getItem("allUsers"));
         let userIsNew = true;
-        for (let i = 1; i < allUsers.length; i++) {
+        for (let i = 0; i < allUsers.length; i++) {
+            console.log("i'm in loop");
             if (username === allUsers[i].name) {
+                console.log("dave exists");
                 setPlayingUsers((prevPlayingUsers) => [...prevPlayingUsers, allUsers[i]]);
                 userIsNew = false;
                 break;
             }
         }
         if (userIsNew) {
-            addToAllUsers(username);
-            setPlayingUsers((prevPlayingUsers) => {
-                [...prevPlayingUsers, allUsers[-1]];
-            });
+            // addToAllUsers (username);
+            // setPlayingUsers((prevPlayingUsers)=>{
+            const newUser = addToAllUsers(username); // Use returned newUser directly
+            console.log(newUser);
+            setPlayingUsers((prevPlayingUsers) => [...prevPlayingUsers, newUser]);
+            //return [...prevPlayingUsers, allUsers[allUsers.length]]
+            // console.log("playingUsers : ",playingUsers)
         }
     }
 
