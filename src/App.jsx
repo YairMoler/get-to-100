@@ -5,24 +5,27 @@ import Login from "./components/Login";
 
 function App() {
     const [playingUsers, setPlayingUsers] = useState([
-        { name: "a", score: [3, 4] },
-        { name: "b", score: [4, 5] },
+        { name: "a", score: [3, 4], id: 1 },
+        { name: "b", score: [4, 5], id: 2 },
     ]);
 
-    const updateScore = (index, newScore) => {
+    const updateScoreAtEnd = (id, newScore) => {
         const newPlayers = playingUsers.map((player, currentIndex) =>
-            index !== currentIndex ? player : { ...player, score: [...player.score, newScore] }
+            id !== player.id ? player : { ...player, score: [...player.score, newScore] }
         );
         setPlayingUsers((prevPlayingUsers) =>
-            prevPlayingUsers.map((player, currentIndex) => (index !== currentIndex ? player : { ...player, score: [...player.score, newScore] }))
+            prevPlayingUsers.map((player) => (id !== player.id ? player : { ...player, score: [...player.score, newScore] }))
         );
-        localStorage.setItem("allUsers", JSON.stringify(newPlayers));
+        let allUsers = JSON.parse(localStorage.getItem("allUsers"));
+        let newAllUsers = allUsers.map((player) => (id !== player.id ? player : { ...player, score: [...player.score, newScore] }));
+        console.log("newAllUsers: ", newAllUsers);
+        localStorage.setItem("allUsers", JSON.stringify(newAllUsers));
     };
 
     return (
         <>
             <Login setPlayingUsers={setPlayingUsers} />
-            <GameScreen playingUsers={playingUsers} updateScore={updateScore} />
+            <GameScreen playingUsers={playingUsers} updateScoreAtEnd={updateScoreAtEnd} />
         </>
     );
 }

@@ -11,10 +11,10 @@ export default function GameScreen(props) {
                 <PersonalBoard
                     player={player}
                     activePlayer={index === activePlayer ? true : false}
-                    key={index}
+                    key={player.id}
                     changePlayer={changePlayer}
-                    updateScore={props.updateScore}
-                    index={index}
+                    updateScoreAtEnd={props.updateScoreAtEnd}
+                    id={player.id}
                 />
             ))}
         </>

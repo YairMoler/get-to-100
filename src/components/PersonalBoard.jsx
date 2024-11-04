@@ -22,7 +22,7 @@ export default function PersonalBoard(props) {
             console.log("hi");
             setEndGame(true);
             console.log("endGame: ", endGame);
-            props.updateScore(props.index, score + 1);
+            props.updateScoreAtEnd(props.id, score + 1);
         }
         props.changePlayer();
     };
@@ -33,7 +33,7 @@ export default function PersonalBoard(props) {
         if (gameValue - 1 === 100) {
             setEndGame(true);
             console.log("endGame: ", endGame);
-            props.updateScore(props.index, score + 1);
+            props.updateScoreAtEnd(props.id, score + 1);
         }
         props.changePlayer();
     };
@@ -44,7 +44,7 @@ export default function PersonalBoard(props) {
         if (gameValue * 2 === 100) {
             setEndGame(true);
             console.log("endGame: ", endGame);
-            props.updateScore(props.index, score + 1);
+            props.updateScoreAtEnd(props.id, score + 1);
         }
         props.changePlayer();
     };
@@ -55,7 +55,7 @@ export default function PersonalBoard(props) {
         if (gameValue / 2 === 100) {
             setEndGame(true);
             console.log("endGame: ", endGame);
-            props.updateScore(props.index, score + 1);
+            props.updateScoreAtEnd(props.id, score + 1);
         }
         props.changePlayer();
     };
