@@ -9,14 +9,20 @@ function App() {
         // { name: "b", score: [4, 5] },
     ]);
 
-    const updateScore = (index) => {
-        setPlayingUsers();
+    const updateScore = (index, newScore) => {
+        const newPlayers = playingUsers.map((player, currentIndex) =>
+            index !== currentIndex ? player : { ...player, score: [...player.score, newScore] }
+        );
+        setPlayingUsers((prevPlayingUsers) =>
+            prevPlayingUsers.map((player, currentIndex) => (index !== currentIndex ? player : { ...player, score: [...player.score, newScore] }))
+        );
+        localStorage.setItem("allUsers", JSON.stringify(newPlayers));
     };
 
     return (
         <>
             <Login setPlayingUsers={setPlayingUsers} />
-            <GameScreen playingUsers={playingUsers} />
+            <GameScreen playingUsers={playingUsers} updateScore={updateScore} />
         </>
     );
 }

@@ -8,7 +8,14 @@ export default function GameScreen(props) {
     return (
         <>
             {props.playingUsers.map((player, index) => (
-                <PersonalBoard player={player} activePlayer={index === activePlayer ? true : false} key={index} changePlayer={changePlayer} />
+                <PersonalBoard
+                    player={player}
+                    activePlayer={index === activePlayer ? true : false}
+                    key={index}
+                    changePlayer={changePlayer}
+                    updateScore={props.updateScore}
+                    index={index}
+                />
             ))}
         </>
     );

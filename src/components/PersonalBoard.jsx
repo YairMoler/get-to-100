@@ -4,35 +4,59 @@ export default function PersonalBoard(props) {
     const [gameValue, setGameValue] = useState(Math.floor(Math.random() * 99) + 1);
     const [score, SetScore] = useState(0);
 
+    const startNewGame = () => {
+        setGameValue(Math.floor(Math.random() * 99) + 1);
+        SetScore(0);
+        setEndGame(false);
+    };
+
     // const endGame
 
-    let endGame = false;
+    const [endGame, setEndGame] = useState(false);
+    console.log("endGame: ", endGame);
 
     const addOne = () => {
-        setGameValue((prevGameValue) => ++prevGameValue);
-        SetScore((prevScore) => ++prevScore);
-        if (gameValue === 100) endGame = true;
+        setGameValue((prevGameValue) => prevGameValue + 1);
+        SetScore((prevScore) => prevScore + 1);
+        if (gameValue + 1 === 100) {
+            console.log("hi");
+            setEndGame(true);
+            console.log("endGame: ", endGame);
+            props.updateScore(props.index, score + 1);
+        }
         props.changePlayer();
     };
 
     const subtractOne = () => {
-        setGameValue((prevGameValue) => --prevGameValue);
-        SetScore((prevScore) => ++prevScore);
-        if (gameValue === 100) endGame = true;
+        setGameValue((prevGameValue) => prevGameValue - 1);
+        SetScore((prevScore) => prevScore + 1);
+        if (gameValue - 1 === 100) {
+            setEndGame(true);
+            console.log("endGame: ", endGame);
+            props.updateScore(props.index, score + 1);
+        }
         props.changePlayer();
     };
 
     const multiplyByTwo = () => {
         setGameValue((prevGameValue) => prevGameValue * 2);
-        SetScore((prevScore) => ++prevScore);
-        if (gameValue === 100) endGame = true;
+        SetScore((prevScore) => prevScore + 1);
+        if (gameValue * 2 === 100) {
+            setEndGame(true);
+            console.log("endGame: ", endGame);
+            props.updateScore(props.index, score + 1);
+        }
         props.changePlayer();
     };
 
     const divideByTwo = () => {
-        setGameValue((prevGameValue) => prevGameValue / 2);
-        SetScore((prevScore) => ++prevScore);
-        if (gameValue === 100) endGame = true;
+        setGameValue((prevGameValue) => Math.floor(prevGameValue / 2));
+        SetScore((prevScore) => prevScore + 1);
+        if (gameValue / 2 === 100) {
+            setEndGame(true);
+            console.log("endGame: ", endGame);
+            props.updateScore(props.index, score + 1);
+        }
         props.changePlayer();
     };
 
@@ -41,7 +65,7 @@ export default function PersonalBoard(props) {
             <h2>player: {props.player.name}</h2>
             <div>{gameValue}</div>
             <div>steps: {score}</div>
-            {props.activePlayer && (
+            {props.activePlayer && !endGame && (
                 <div>
                     <button onClick={addOne}>+1</button>
                     <button onClick={subtractOne}>-1</button>
@@ -53,7 +77,7 @@ export default function PersonalBoard(props) {
                 <div>
                     <h3>Do you want to play again?</h3>
                     <button onClick={startNewGame}>yes</button>
-                    <button onClick={logOut}>no</button>
+                    {/* <button onClick={logOut}>no</button> */}
                 </div>
             )}
         </>
